@@ -9,7 +9,7 @@ public class Week2Demo : MonoBehaviour
     int health=10;
 
    [SerializeField] 
-    string name = "Bob";
+    string name = "Sprinkles";
 
     [SerializeField]
     GameObject creaturePrefab;
