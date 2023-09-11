@@ -16,7 +16,7 @@ public class CreatureSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        creaturePrefab = GameObject.Find("Spider");
+       
         Instantiate(creaturePrefab,spawnPositionOne,Quaternion.identity);
         Instantiate(creaturePrefab, spawnPositionTwo, Quaternion.identity);
         Instantiate(creaturePrefab, spawnPositionThree, Quaternion.identity);
