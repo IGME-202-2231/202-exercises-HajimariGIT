@@ -7,13 +7,9 @@ public class ClockNumbers : MonoBehaviour
 
 {
     [SerializeField] TextMesh number;
-    [SerializeField] List<TextMesh> numbers = new List<TextMesh>();
-    Quaternion control;
     Vector3 spawnOne;
-    int stop = 360;
-    int counter;
-    int start = 3;
-    bool contain = false;
+    private int stop = 360;
+    private int start = 3;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,22 +19,30 @@ public class ClockNumbers : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //outer loop to control when numbers hit 0 in the unit circle
        while( stop != 0 ) 
        {
+          //create the number's text in ascending order
           if(start <= 12)
           {
+                //makes the text that number
                 number.text = start.ToString();
 
           }
+            //equation to find X
             float x = Mathf.Cos(stop * Mathf.PI/180) * 3;
+            //equation to find y
             float y = Mathf.Sin(stop * Mathf.PI/180) * 3;
+            //store the values in the vector 3
             spawnOne.x = x;
             spawnOne.y = y;
+            //instantiate the number 
             Instantiate(number, spawnOne,Quaternion.identity);
-            numbers.Add(number);
+            //decrease around the unit cirle by 30
             stop = stop - 30;
-            counter++;
+            //stores number we are on currently
             start= start + 1;
+            //handles the last two numbers
             if(start == 13)
             {
                 number.text="1";

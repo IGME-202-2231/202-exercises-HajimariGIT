@@ -220,27 +220,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6411479825fc8a4a988fdabaa02003b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  number: {fileID: 0}
-  numbers: []
+  number: {fileID: 8610106827760532629, guid: 36b4290f6901e1240a53d8169b3e1b91, type: 3}
+--- !u!4 &343051445 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 758343273354682953, guid: a6bb5630b5f067b46bdaa1b824f89123, type: 3}
+  m_PrefabInstance: {fileID: 661565914}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &385821232
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 644537088}
     m_Modifications:
     - target: {fileID: 758343273354682953, guid: a6bb5630b5f067b46bdaa1b824f89123, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 758343273354682953, guid: a6bb5630b5f067b46bdaa1b824f89123, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.2177952
+      value: 0.21779521
       objectReference: {fileID: 0}
     - target: {fileID: 758343273354682953, guid: a6bb5630b5f067b46bdaa1b824f89123, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.2177952
+      value: 0.21779521
       objectReference: {fileID: 0}
     - target: {fileID: 758343273354682953, guid: a6bb5630b5f067b46bdaa1b824f89123, type: 3}
       propertyPath: m_LocalScale.z
@@ -264,11 +268,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 758343273354682953, guid: a6bb5630b5f067b46bdaa1b824f89123, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 758343273354682953, guid: a6bb5630b5f067b46bdaa1b824f89123, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 758343273354682953, guid: a6bb5630b5f067b46bdaa1b824f89123, type: 3}
       propertyPath: m_LocalRotation.z
@@ -328,6 +332,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 343051445}
+  - {fileID: 1157054443}
   - {fileID: 86410281}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -345,18 +351,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   number: {fileID: 8610106827760532629, guid: 36b4290f6901e1240a53d8169b3e1b91, type: 3}
-  numbers: []
 --- !u!1001 &661565914
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 644537088}
     m_Modifications:
     - target: {fileID: 758343273354682953, guid: a6bb5630b5f067b46bdaa1b824f89123, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 758343273354682953, guid: a6bb5630b5f067b46bdaa1b824f89123, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.37828746
+      objectReference: {fileID: 0}
+    - target: {fileID: 758343273354682953, guid: a6bb5630b5f067b46bdaa1b824f89123, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.37828746
       objectReference: {fileID: 0}
     - target: {fileID: 758343273354682953, guid: a6bb5630b5f067b46bdaa1b824f89123, type: 3}
       propertyPath: m_LocalPosition.x
@@ -376,11 +389,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 758343273354682953, guid: a6bb5630b5f067b46bdaa1b824f89123, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 758343273354682953, guid: a6bb5630b5f067b46bdaa1b824f89123, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 758343273354682953, guid: a6bb5630b5f067b46bdaa1b824f89123, type: 3}
       propertyPath: m_LocalRotation.z
@@ -443,7 +456,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.19215688, g: 0.4444931, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -499,3 +512,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1157054443 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 758343273354682953, guid: a6bb5630b5f067b46bdaa1b824f89123, type: 3}
+  m_PrefabInstance: {fileID: 385821232}
+  m_PrefabAsset: {fileID: 0}
