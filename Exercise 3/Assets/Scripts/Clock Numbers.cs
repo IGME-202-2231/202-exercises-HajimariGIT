@@ -34,7 +34,7 @@ public class ClockNumbers : MonoBehaviour
             //equation to find y
             float y = Mathf.Sin(stop * Mathf.PI/180) * 3;
             //store the values in the vector 3
-            spawnOne.x = x;
+            spawnOne.x = x; 
             spawnOne.y = y;
             //instantiate the number 
             Instantiate(number, spawnOne,Quaternion.identity);
