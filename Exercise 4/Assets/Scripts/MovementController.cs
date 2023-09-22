@@ -6,10 +6,10 @@ using UnityEngine.InputSystem;
 public class MovementController : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] Vector3 objectPosition = new Vector3 (0, 0, 0);
-    [SerializeField] float speed = 4f;
-    [SerializeField] Vector3 direction = new Vector3(1,0,0);
-    [SerializeField] Vector3 velocity = new Vector3(0,0,0);
+    [SerializeField] Vector3 objectPosition = Vector3.zero;
+    [SerializeField] float speed = 1.0f;
+    [SerializeField] Vector3 direction = Vector3.right;
+    [SerializeField] Vector3 velocity = Vector3.zero;
     void Start()
     {
         objectPosition = transform.position;
@@ -31,7 +31,14 @@ public class MovementController : MonoBehaviour
 
     public void SetDirection(Vector3 directionInput)
     {
-        direction += directionInput;
+      if(directionInput != null)
+        {
+            direction = directionInput.normalized;
+            if(direction != Vector3.zero)
+            {
+                transform.rotation = Quaternion.LookRotation(Vector3.back, direction);
+            }
+        }
         
 
 
