@@ -7,7 +7,9 @@ public class InputController : MonoBehaviour
 {
 
     public Vector2 inputDirection = new Vector2();
-    public MovementController myMovementController = new MovementController();
+    [SerializeField] MovementController myMovementController;
+
+
   
 
    

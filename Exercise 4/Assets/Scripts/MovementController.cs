@@ -6,42 +6,70 @@ using UnityEngine.InputSystem;
 public class MovementController : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] Vector3 objectPosition = Vector3.zero;
-    [SerializeField] float speed = 1.0f;
-    [SerializeField] Vector3 direction = Vector3.right;
-    [SerializeField] Vector3 velocity = Vector3.zero;
+    Vector3 objectPosition = Vector3.zero;
+    float speed = 4.0f;
+    Vector3 direction = Vector3.up;
+    Vector3 velocity = Vector3.zero;
+    private float totalCamheight;
+    int test;
+    private float totalCamwidth;
+  
     void Start()
     {
         objectPosition = transform.position;
+        totalCamheight = 2f * Camera.main.orthographicSize;
+        totalCamwidth = totalCamheight * Camera.main.aspect;
+        direction = Vector3.zero;
     }
 
     // Update is called once per frame
     void Update()
     {
-        SetDirection(direction);
-        velocity = direction * speed * Time.deltaTime;
-        objectPosition += velocity;
+       velocity = direction * speed * Time.deltaTime;
+       objectPosition += velocity;
+
+        if (objectPosition.y > totalCamheight / 2f)
+        {
+            objectPosition = new Vector3(objectPosition.x, -totalCamheight / 2f, objectPosition.z);
+        }
+        else if (objectPosition.y < -totalCamheight / 2f)
+        {
+            objectPosition = new Vector3(objectPosition.x, totalCamheight / 2f, objectPosition.z);
+        }
+
+        if (objectPosition.x > totalCamwidth /2f)
+        {
+            objectPosition= new Vector3(-totalCamwidth/2f,objectPosition.y,objectPosition.z);
+        }
+        else if(objectPosition.x < -totalCamwidth / 2f)
+        {
+            objectPosition = new Vector3(totalCamwidth / 2f, objectPosition.y,objectPosition.z);
+        }
+
+        
+
         transform.position = objectPosition;
-        transform.rotation = Quaternion.LookRotation(Vector3.forward, direction); // for 2D rotation
+
         
 
 
     }
 
 
-    public void SetDirection(Vector3 directionInput)
+    public void SetDirection(Vector2 input)
     {
-      if(directionInput != null)
-        {
-            direction = directionInput.normalized;
-            if(direction != Vector3.zero)
+      if(input != null)
+      {
+            direction = input;
+
+            if (input != Vector2.zero)
             {
-                transform.rotation = Quaternion.LookRotation(Vector3.back, direction);
+                transform.rotation = Quaternion.LookRotation(Vector3.forward, input);
             }
+
         }
         
-
-
+       
     }
 
 
