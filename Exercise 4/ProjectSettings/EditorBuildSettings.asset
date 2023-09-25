@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/VehicleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/vehicle.unity
+    path: Assets/Scenes/vehicle.unity
     guid: 88753d2d365fc124fa56b8f8b0b7c38f
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 249af70741573f4419cb9a9ff902a755, type: 2}
