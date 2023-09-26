@@ -26,6 +26,14 @@ public class SpriteInfo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+      if(isColliding)
+      {
+            renderer.color = Color.red;
+            
+      } 
+      else
+      {
+            renderer.color = Color.white;
+      }
     }
 }
