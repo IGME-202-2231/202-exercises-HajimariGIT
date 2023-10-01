@@ -5,23 +5,38 @@ using UnityEngine;
 public class SpriteInfo : MonoBehaviour
 {
     [SerializeField] float raidus = 1f;
-
-    public float Radius
-    {
-        get { return Radius; }
-    }
-    [SerializeField] Vector2 ractSize = Vector2.one;
-
-
     // Properties for min/max
     [SerializeField] SpriteRenderer renderer;
     bool isColliding = false;
+    [SerializeField] Vector2 ractSize = Vector2.one;
+
+    public float Radius
+    {
+        get { return raidus; }
+    }
+   
     
     public bool IsColliding
     {
         set { isColliding = value; }
     }
-    
+
+    public Vector3 RectMin
+    {
+        get { return renderer.bounds.min; }
+    }
+
+    public Vector3 RectMax
+    {
+        get { return renderer.bounds.max; }
+    }
+
+    public Vector3 center
+    {
+        get { return renderer.bounds.center; }
+    }
+   
+
 
     // Update is called once per frame
     void Update()
@@ -35,5 +50,15 @@ public class SpriteInfo : MonoBehaviour
       {
             renderer.color = Color.white;
       }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+
+
+        Gizmos.DrawWireSphere(Vector2.zero, raidus);
+        ///Gizmos.DrawWireSphere(transform.position, rectSize);
+
     }
 }
