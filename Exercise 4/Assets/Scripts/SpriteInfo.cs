@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class SpriteInfo : MonoBehaviour
 {
-    [SerializeField] float raidus = 1f;
+
     // Properties for min/max
     [SerializeField] SpriteRenderer renderer;
     bool isColliding = false;
     [SerializeField] Vector2 ractSize = Vector2.one;
+    CollisionManager test = new CollisionManager();
 
     public float Radius
     {
-        get { return raidus; }
+        get { return renderer.bounds.size.x / 2 + 0.07f; }
     }
    
     
@@ -51,14 +52,7 @@ public class SpriteInfo : MonoBehaviour
             renderer.color = Color.white;
       }
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
+    
 
 
-        Gizmos.DrawWireSphere(Vector2.zero, raidus);
-        ///Gizmos.DrawWireSphere(transform.position, rectSize);
-
-    }
 }
