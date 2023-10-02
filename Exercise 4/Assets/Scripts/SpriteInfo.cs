@@ -14,10 +14,13 @@ public class SpriteInfo : MonoBehaviour
     //refrebce if needed
     CollisionManager test = new CollisionManager();
 
-    //get radius 
+    /// <summary>
+    /// property for radius 
+    /// </summary>
     public float Radius
     {
-        get { return renderer.bounds.size.x / 2 + 0.07f; }
+        //added a buffer to make it bigger 
+        get { return renderer.bounds.size.x / 2 + 0.3f; }
     }
    
    /// <summary>
