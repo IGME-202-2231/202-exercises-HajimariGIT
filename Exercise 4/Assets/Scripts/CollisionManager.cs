@@ -147,7 +147,7 @@ public class CollisionManager : MonoBehaviour
     {
         if (modeState == Mode.Sqaure)
         {
-            collisionText.text = "Sqaure";
+            collisionText.text = "Square";
             return control = false;
         }
         else
