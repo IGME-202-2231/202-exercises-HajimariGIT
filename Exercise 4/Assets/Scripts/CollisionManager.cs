@@ -135,7 +135,7 @@ public class CollisionManager : MonoBehaviour
         else
         {
             return false;
-        }
+        } 
     }
 
    /// <summary>
