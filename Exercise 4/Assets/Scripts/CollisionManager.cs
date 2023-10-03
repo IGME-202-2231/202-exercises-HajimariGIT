@@ -75,20 +75,29 @@ public class CollisionManager : MonoBehaviour
                 if (control == false)
                 {
                     isColliding = AABBCheck(spriteA, spriteB);
+
+                    if (isColliding)
+                    {
+                        //set both to true 
+                        spriteA.IsColliding = true;
+                        spriteB.IsColliding = true;
+                    }
                 }
                 else
                 {
                    isColliding= Circle(spriteA, spriteB);
+
+                    if (isColliding)
+                    {
+                        //set both to true 
+                        spriteA.IsColliding = true;
+                        spriteB.IsColliding = true;
+                    }
                 }
 
                 //otherwise 
 
-                if (isColliding)
-                {
-                    //set both to true 
-                    spriteA.IsColliding = true;
-                    spriteB.IsColliding = true;
-                }
+                
             }
         }
     }
