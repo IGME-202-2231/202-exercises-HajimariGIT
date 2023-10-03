@@ -16,7 +16,7 @@ public class CollisionManager : MonoBehaviour
    
     /// <summary>
     /// controls current mode
-    /// </summary>
+    /// </summary> 
     public enum Mode
     {
         Sqaure,
