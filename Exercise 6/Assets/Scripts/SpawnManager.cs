@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpawnManager : Singleton<SpawnManager>
 {
+
+    public string name = "eric";
     // (Optional) Prevent non-singleton constructor use.
     protected SpawnManager() { }
 
