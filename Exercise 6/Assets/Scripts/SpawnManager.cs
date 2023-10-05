@@ -11,6 +11,8 @@ public class SpawnManager : Singleton<SpawnManager>
 
     List<SpriteRenderer> spawnedAnimals = new List<SpriteRenderer> ();
 
+    public float std;
+
 
 
 
@@ -40,7 +42,7 @@ public class SpawnManager : Singleton<SpawnManager>
     public void Spawn()
     {
         DestroyAnimal();
-        for(int i = 0; i< 1000; ++i)
+        for(int i = 0; i< 100; ++i)
         {
             spawnedAnimals.Add(SpawnCreature());
 
@@ -82,5 +84,10 @@ public class SpawnManager : Singleton<SpawnManager>
 
         spawnedAnimals.Clear();
 
+    }
+
+    float Gaussian(float mean, float std)
+    {
+        return 1f;
     }
 }
