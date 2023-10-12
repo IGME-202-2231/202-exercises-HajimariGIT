@@ -42,7 +42,7 @@ public class SpawnManager : Singleton<SpawnManager>
     public void Spawn()
     {
         DestroyAnimal();
-        for(int i = 0; i< 100; ++i)
+        for(int i = 0; i< 30; ++i)
         {
             spawnedAnimals.Add(SpawnCreature());
 
@@ -52,8 +52,8 @@ public class SpawnManager : Singleton<SpawnManager>
 
             //set position 
             Vector2 spawnpos;
-            spawnpos.x = Random.Range(-4f, 4f);
-            spawnpos.y = Random.Range(-2f, 2f);
+            spawnpos.x = Gaussian(.5f, 1f);
+            spawnpos.y = Gaussian(-.5f,1f);
 
             spawnedAnimals[i].transform.position = spawnpos;
 
@@ -86,8 +86,17 @@ public class SpawnManager : Singleton<SpawnManager>
 
     }
 
-    float Gaussian(float mean, float std)
+    private float Gaussian(float mean, float stdDev)
     {
-        return 1f;
+        float val1 = Random.Range(0f, 1f);
+        float val2 = Random.Range(0f, 1f);
+
+        float gaussValue =
+        Mathf.Sqrt(-2.0f * Mathf.Log(val1)) *
+        Mathf.Sin(2.0f * Mathf.PI * val2);
+
+        return mean + stdDev * gaussValue;
     }
+
+
 }
