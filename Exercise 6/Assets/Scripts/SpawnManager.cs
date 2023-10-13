@@ -41,8 +41,9 @@ public class SpawnManager : Singleton<SpawnManager>
 
     public void Spawn()
     {
+        int numberAnimals = Random.Range(0, 50);
         DestroyAnimal();
-        for(int i = 0; i< 30; ++i)
+        for(int i = 0; i< numberAnimals; ++i)
         {
             spawnedAnimals.Add(SpawnCreature());
 
@@ -72,6 +73,34 @@ public class SpawnManager : Singleton<SpawnManager>
             {
                 spawnedAnimals[i].sprite = animalImages[3];
             }
+
+
+
+            if(ranValue < 0.25f)
+            {
+                spawnedAnimals[i].sprite = animalImages[1];
+
+            }
+            else if (ranValue < 0.45f)
+            {
+                spawnedAnimals[i].sprite = animalImages[2];
+            }
+            else if (ranValue < 0.60f)
+            {
+                spawnedAnimals[i].sprite = animalImages[3];
+            }
+            else if (ranValue < 0.70f)
+            {
+                spawnedAnimals[i].sprite = animalImages[4];
+            }
+            else
+            {
+                spawnedAnimals[i].sprite = animalImages[0];
+            }
+
+
+
+
         }
     }
 
