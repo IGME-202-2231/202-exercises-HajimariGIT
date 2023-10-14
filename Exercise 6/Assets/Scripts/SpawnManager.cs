@@ -79,7 +79,7 @@ public class SpawnManager : Singleton<SpawnManager>
             {
                 spawnedAnimals[i].sprite = animalImages[2];
             }
-            //15% chance for turtle
+            //15% chance for snail
             else if (ranValue < 0.60f)
             {
                 spawnedAnimals[i].sprite = animalImages[3];
