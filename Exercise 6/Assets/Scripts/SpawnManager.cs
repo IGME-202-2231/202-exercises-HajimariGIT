@@ -32,23 +32,28 @@ public class SpawnManager : Singleton<SpawnManager>
       
     }
 
-
+    //makes animalPrefab 
     public  SpriteRenderer SpawnCreature()
     {
         return Instantiate(animalPrefab); 
     }
 
-
+    /// <summary>
+    /// spawns random animals
+    /// </summary>
     public void Spawn()
     {
+        //while any number between 0-50
         int numberAnimals = Random.Range(0, 50);
+        //destroy previous
         DestroyAnimal();
+        //spawn said number from 0-50
         for(int i = 0; i< numberAnimals; ++i)
         {
             spawnedAnimals.Add(SpawnCreature());
 
 
-            //do random
+            //do random color
             spawnedAnimals[i].color = Random.ColorHSV(0f, 1f, 1f, 1f, 1f, 1f);
 
             //set position 
@@ -56,43 +61,35 @@ public class SpawnManager : Singleton<SpawnManager>
             spawnpos.x = Gaussian(.5f, 1f);
             spawnpos.y = Gaussian(-.5f,1f);
 
+            //transforms the position
             spawnedAnimals[i].transform.position = spawnpos;
 
-
+            //holds spawn random values
             float ranValue = Random.value;
 
-            if(ranValue < 0.6f)
-            {
-                spawnedAnimals[i].sprite = animalImages[0];
-            }
-            else if(ranValue < 0.84)
-            {
-                spawnedAnimals[i].sprite = animalImages[2];
-            }
-            else
-            {
-                spawnedAnimals[i].sprite = animalImages[3];
-            }
 
-
-
+            //25 % chance for elephant 
             if(ranValue < 0.25f)
             {
                 spawnedAnimals[i].sprite = animalImages[1];
 
             }
+            //20% chance for tutrle
             else if (ranValue < 0.45f)
             {
                 spawnedAnimals[i].sprite = animalImages[2];
             }
+            //15% chance for turtle
             else if (ranValue < 0.60f)
             {
                 spawnedAnimals[i].sprite = animalImages[3];
             }
+            //10% chance for ocotopus
             else if (ranValue < 0.70f)
             {
                 spawnedAnimals[i].sprite = animalImages[4];
             }
+            //30% chance for kangaroo
             else
             {
                 spawnedAnimals[i].sprite = animalImages[0];
@@ -104,8 +101,13 @@ public class SpawnManager : Singleton<SpawnManager>
         }
     }
 
+    /// <summary>
+    /// Destroys animals in list
+    /// </summary>
+
     public void DestroyAnimal()
     {
+        //destroyes each animal in the list
         foreach(SpriteRenderer animal in spawnedAnimals)
         {
             Destroy(animal.gameObject);
@@ -114,7 +116,12 @@ public class SpawnManager : Singleton<SpawnManager>
         spawnedAnimals.Clear();
 
     }
-
+    /// <summary>
+    /// Gaussian distrubution
+    /// </summary>
+    /// <param name="mean"></param>
+    /// <param name="stdDev"></param>
+    /// <returns></returns>
     private float Gaussian(float mean, float stdDev)
     {
         float val1 = Random.Range(0f, 1f);

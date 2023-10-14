@@ -11,7 +11,7 @@ public class CollisionManager : MonoBehaviour
     //contros what equation to use
     bool control=true;
     //controls text
-    public TextMesh collisionText;
+    //public TextMesh collisionText;
     // Start is called before the first frame update
    
     /// <summary>
