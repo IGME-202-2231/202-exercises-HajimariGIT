@@ -9,10 +9,10 @@ public class PhysicsObject : MonoBehaviour
     public  Vector3 velocity;
     public  Vector3 position;
     public Vector3 Acelleration = Vector3.zero;
-    float mass = 1.0f;
-    float maxSpeed = 10f;
+   public float mass = 1.0f;
+    public float maxSpeed = 10f;
 
-    bool useGravity = true;
+    public bool useGravity = true;
     void Start()
     {
         position = transform.position;
@@ -28,8 +28,12 @@ public class PhysicsObject : MonoBehaviour
         }
         velocity += Acelleration * Time.deltaTime;
         velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
+        position += velocity * Time.deltaTime;
         Direction = velocity.normalized;
+        transform.position = position;
         Acelleration = Vector3.zero;
+
+       
 
         
 
