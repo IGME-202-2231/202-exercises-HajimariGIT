@@ -33,14 +33,37 @@ public class PhysicsObject : MonoBehaviour
         transform.position = position;
         Acelleration = Vector3.zero;
 
+
+        if(position.y  < -4.57)
+        {
+            velocity.y *= -1f;
+           
+        }
+        if (position.y > 4.53)
+        {
+            velocity.y *= -1f;
+         
+        }
+        if (position.x < -9.57)
+        {
+            velocity.x *= -1f;
+          
+        }
+        if (position.x > 10.48)
+        {
+            velocity.x *= -1f;
+           
+        }
+
+
        
 
-        
+
 
 
     }
 
-   
+
 
     public void Apply(Vector3 force)
     {
