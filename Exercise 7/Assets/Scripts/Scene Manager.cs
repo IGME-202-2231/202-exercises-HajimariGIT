@@ -19,6 +19,13 @@ public class SceneManager : MonoBehaviour
         store = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         store.z = 0;
 
-        objects[0].Apply(store);
+        objects[0].Apply(store - objects[0].transform.position);
+    }
+
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+
     }
 }
