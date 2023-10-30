@@ -6,22 +6,27 @@ public class PhysicsObject : MonoBehaviour
 {
     // Start is called before the first frame update
     public Vector3 Direction;
-    public  Vector3 velocity;
-    public  Vector3 position;
+    public  Vector3 Velocity;
+    public  Vector3 Position;
     public Vector3 Acelleration = Vector3.zero;
-   public float mass = 1.0f;
-    public float maxSpeed = 10f;
+    public float mass;
+    public float maxSpeed;
     private float totalCamheight;
     int test;
     private float totalCamwidth;
+    public bool useGravity;
+    public bool useFriction;
+    public float gravity;
+    public float friction;
 
 
-    public bool useGravity = true;
+    
     void Start()
     {
-        position = transform.position;
+        Position = transform.position;
         totalCamheight = 2f * Camera.main.orthographicSize;
         totalCamwidth = totalCamheight * Camera.main.aspect;
+        gravity = .98f;
     }
 
     // Update is called once per frame
@@ -30,33 +35,37 @@ public class PhysicsObject : MonoBehaviour
 
         if (useGravity)
         {
-            ApplyGrav(Vector3.down * 9.8f);
+            ApplyGrav(Vector3.down * gravity);
         }
-        velocity += Acelleration * Time.deltaTime;
-        velocity = Vector3.ClampMagnitude(velocity, maxSpeed);
-        position += velocity * Time.deltaTime;
-        Direction = velocity.normalized;
-        transform.position = position;
+        if(useFriction)
+        {
+            ApplyFriction(friction);
+        }
+        Velocity += Acelleration * Time.deltaTime;
+        Velocity = Vector3.ClampMagnitude(Velocity, maxSpeed);
+        Position += Velocity * Time.deltaTime;
+        Direction = Velocity.normalized;
+        transform.position = Position;
         Acelleration = Vector3.zero;
 
 
 
-        if (position.y > totalCamheight / 2f)
+        if (Position.y > totalCamheight / 2f)
         {
-            velocity.y *= -1f;
+            Velocity.y *= -1f;
         }
-        else if (position.y < -totalCamheight / 2f)
+        else if (Position.y < -totalCamheight / 2f)
         {
-            velocity.y *= -1f;
+            Velocity.y *= -1f;
         }
 
-        if (position.x > totalCamwidth / 2f)
+        if (Position.x > totalCamwidth / 2f)
         {
-            velocity.x *= -1f;
+            Velocity.x *= -1f;
         }
-        else if (position.x < -totalCamwidth / 2f)
+        else if (Position.x < -totalCamwidth / 2f)
         {
-            velocity.x *= -1f;
+            Velocity.x *= -1f;
         }
 
 
@@ -69,7 +78,7 @@ public class PhysicsObject : MonoBehaviour
 
 
 
-    public void Apply(Vector3 force)
+    public void ApplyForce(Vector3 force)
     {
         Acelleration += force / mass;
     }
@@ -78,4 +87,13 @@ public class PhysicsObject : MonoBehaviour
     {
         Acelleration += force;
     }
+
+    void ApplyFriction(float coeff)
+    {
+        Vector3 friction = Velocity * -1;
+        friction.Normalize();
+        friction = friction * coeff;
+        ApplyForce(friction);
+    }
+
 }
