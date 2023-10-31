@@ -18,9 +18,30 @@ public class PhysicsObject : MonoBehaviour
     public bool useFriction;
     public float gravity;
     public float friction;
+    public float radius;
+
+    public float Radius
+    {
+        get { return radius; }
+    }
 
 
-    
+    public float velocity
+    {
+
+        get { return velocity; }
+    }
+
+    public float max
+    {
+
+        get { return maxSpeed; }
+    }
+
+
+
+
+
     void Start()
     {
         Position = transform.position;
@@ -96,5 +117,7 @@ public class PhysicsObject : MonoBehaviour
         friction = friction * coeff;
         ApplyForce(friction);
     }
+
+
 
 }
