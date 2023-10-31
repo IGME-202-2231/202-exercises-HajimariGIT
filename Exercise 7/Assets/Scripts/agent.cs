@@ -10,6 +10,7 @@ public abstract class agent : MonoBehaviour
     public Vector3 myPos;
     public Vector3 currentVelocity;
     public float maxSpeed =10f;
+    public GameObject v;
 
 
 

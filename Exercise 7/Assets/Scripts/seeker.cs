@@ -22,4 +22,9 @@ public class seeker : agent
     {
         PhysicsObject.ApplyForce(Seek(target));
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.magenta;
+    }
 }
