@@ -5,12 +5,12 @@ using static UnityEditor.PlayerSettings;
 
 public abstract class agent : MonoBehaviour
 {
-    [SerializeField] protected PhysicsObject PhysicsObject;
+    [SerializeField] protected PhysicsObject PhysicsObject; 
     public float MaxForce;
     public Vector3 myPos;
     public Vector3 currentVelocity;
     public float maxSpeed =10f;
-    public GameObject v;
+  
 
 
 
@@ -34,13 +34,13 @@ public abstract class agent : MonoBehaviour
 
     protected abstract void CalcSteeringForce();
 
-    public Vector3 Seek(Vector3 targetPos)
+    protected Vector3 Seek(Vector3 targetPos)
     {
         // Calculate desired velocity
         Vector3 desiredVelocity = targetPos - transform.position;
 
         // Set desired = max speed
-        desiredVelocity = desiredVelocity.normalized * maxSpeed;
+        desiredVelocity = desiredVelocity.normalized * PhysicsObject.maxSpeed;
 
         // Calculate seek steering force
         Vector3 seekingForce = desiredVelocity - PhysicsObject.Velocity;
@@ -49,7 +49,7 @@ public abstract class agent : MonoBehaviour
         return seekingForce;
     }
 
-    public Vector3 Seek(GameObject target)
+    protected Vector3 Seek(GameObject target)
     {
         // Call the other version of Seek 
         //   which returns the seeking steering force
