@@ -54,7 +54,7 @@ public abstract class agent : MonoBehaviour
         // Call the other version of Seek 
         //   which returns the seeking steering force
         //  and then return that returned vector. 
-        return Seek(target.transform.position);
+        return Seek(target.transform.position); 
     }
 
     protected Vector3 Flee(Vector3 targetPos)
