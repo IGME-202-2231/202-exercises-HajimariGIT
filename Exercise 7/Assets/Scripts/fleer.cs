@@ -21,11 +21,13 @@ public class fleer : agent
 
     protected override void CalcSteeringForce()
     {
-        PhysicsObject.ApplyForce(Seek(target));
+        PhysicsObject.ApplyForce(Flee(target));
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.magenta;
     }
+
+  
 }
