@@ -25,6 +25,6 @@ public class seeker : agent
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.magenta;
+        Gizmos.color = Color.magenta; 
     }
 }
