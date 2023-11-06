@@ -6,6 +6,7 @@ using static UnityEngine.GraphicsBuffer;
 public class fleer : agent
 {
     public GameObject target;
+    public bool hit;
 
 
 
@@ -21,7 +22,24 @@ public class fleer : agent
 
     protected override void CalcSteeringForce()
     {
+      if(hit == false)
+      {
+            Vector3 distaceSeek = target.transform.position;
+            Vector3 agentPosition = transform.position;
+            float total = (distaceSeek.magnitude - agentPosition.magnitude);
+            float touch = 1.0f * 1.0f;
+
+            if(total < touch)
+            {
+                hit = true;
+            }
+
+      }
+
         PhysicsObject.ApplyForce(Flee(target));
+      
+
+
     }
 
     private void OnDrawGizmos()

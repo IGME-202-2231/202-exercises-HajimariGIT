@@ -5,6 +5,7 @@ using UnityEngine;
 public class seeker : agent
 {
     public GameObject target;
+    Vector3 position;
 
 
 
@@ -21,6 +22,8 @@ public class seeker : agent
     protected override void CalcSteeringForce()
     {
         PhysicsObject.ApplyForce(Seek(target));
+
+      
     }
 
     private void OnDrawGizmos()

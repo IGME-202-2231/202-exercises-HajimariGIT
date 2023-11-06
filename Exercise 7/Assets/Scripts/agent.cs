@@ -9,7 +9,7 @@ public abstract class agent : MonoBehaviour
     public float MaxForce;
     public Vector3 myPos;
     public Vector3 currentVelocity;
-    public float maxSpeed =10f;
+    public float maxSpeed;
   
 
 
@@ -19,7 +19,7 @@ public abstract class agent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        maxSpeed = PhysicsObject.max;
     }
 
     // Update is called once per frame
@@ -27,6 +27,7 @@ public abstract class agent : MonoBehaviour
     {
 
         CalcSteeringForce();
+        
     }
 
 
