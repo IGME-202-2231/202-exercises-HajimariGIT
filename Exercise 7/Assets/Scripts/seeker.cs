@@ -16,7 +16,7 @@ public class seeker : agent
         
     }
 
-   
+
 
 
     protected override void CalcSteeringForce()
@@ -24,6 +24,7 @@ public class seeker : agent
         PhysicsObject.ApplyForce(Seek(target));
 
       
+
     }
 
     private void OnDrawGizmos()

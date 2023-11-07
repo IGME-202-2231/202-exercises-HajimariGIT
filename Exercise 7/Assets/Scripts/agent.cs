@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public abstract class agent : MonoBehaviour
 {
@@ -23,10 +22,12 @@ public abstract class agent : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+   protected void Update()
     {
 
         CalcSteeringForce();
+
+
         
     }
 
@@ -46,6 +47,9 @@ public abstract class agent : MonoBehaviour
         // Calculate seek steering force
         Vector3 seekingForce = desiredVelocity - PhysicsObject.Velocity;
 
+
+        
+
         // Return seek steering force
         return seekingForce;
     }
@@ -55,6 +59,8 @@ public abstract class agent : MonoBehaviour
         // Call the other version of Seek 
         //   which returns the seeking steering force
         //  and then return that returned vector. 
+
+       
         return Seek(target.transform.position); 
     }
 
@@ -78,6 +84,9 @@ public abstract class agent : MonoBehaviour
         // Call the other version of Seek 
         //   which returns the seeking steering force
         //  and then return that returned vector. 
+
+       
+      
         return Flee(target.transform.position);
     }
 

@@ -18,13 +18,15 @@ public class PhysicsObject : MonoBehaviour
     public bool useFriction;
     public float gravity;
     public float friction;
-    public float radius;
+    public float radius = 1f;
+    [SerializeField] SpriteRenderer renderer;
 
-    public float Radius
+     public float Radius
     {
-        get { return radius; }
+        //added a buffer to make it bigger 
+        get { return renderer.bounds.size.x / 2 + 0.3f; }
     }
-
+   
 
     public float velocity
     {
@@ -38,6 +40,10 @@ public class PhysicsObject : MonoBehaviour
         get { return maxSpeed; }
     }
 
+    public Vector3 center
+    {
+        get { return renderer.bounds.center; }
+    }
 
 
 
@@ -67,6 +73,11 @@ public class PhysicsObject : MonoBehaviour
         Velocity = Vector3.ClampMagnitude(Velocity, maxSpeed);
         Position += Velocity * Time.deltaTime;
         Direction = Velocity.normalized;
+
+        if (Velocity != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(Vector3.back, Velocity);
+        }
         transform.position = Position;
         Acelleration = Vector3.zero;
 
