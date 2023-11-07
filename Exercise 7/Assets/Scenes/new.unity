@@ -141,10 +141,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PhysicsObject: {fileID: 14113075}
-  MaxForce: 10
+  MaxForce: 13
   myPos: {x: 0, y: 0, z: 0}
   currentVelocity: {x: 0, y: 0, z: 0}
-  maxSpeed: 10
+  maxSpeed: 13
   target: {fileID: 29787060}
 --- !u!114 &14113075 stripped
 MonoBehaviour:
@@ -162,6 +162,35 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4679937399551785866, guid: 9450122a6757ce749b425081f2320295, type: 3}
   m_PrefabInstance: {fileID: 2109812303}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &29787061 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7240523920998211057, guid: 9450122a6757ce749b425081f2320295, type: 3}
+  m_PrefabInstance: {fileID: 2109812303}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29787060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b75bdfdf03db4548afd3ca058a31ebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &29787064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29787060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94888b5e8aa65014ebf98ada652b84ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PhysicsObject: {fileID: 29787061}
+  MaxForce: 10
+  myPos: {x: 0, y: 0, z: 0}
+  currentVelocity: {x: 0, y: 0, z: 0}
+  maxSpeed: 10
+  target: {fileID: 14113073}
 --- !u!1001 &164741854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -392,10 +421,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7240523920998211057, guid: 9450122a6757ce749b425081f2320295, type: 3}
       propertyPath: useGravity
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4679937399551785866, guid: 9450122a6757ce749b425081f2320295, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 29787064}
   m_SourcePrefab: {fileID: 100100000, guid: 9450122a6757ce749b425081f2320295, type: 3}

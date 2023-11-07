@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -78,6 +79,21 @@ public abstract class agent : MonoBehaviour
         //   which returns the seeking steering force
         //  and then return that returned vector. 
         return Flee(target.transform.position);
+    }
+
+    protected Vector3 Wander(float time,float radius)
+    {
+        Vector3 targetPos = CalcFuturePosition(time);
+        float ranAngle = Random.Range(0, Mathf.PI * 2f);
+        targetPos.x += Mathf.Cos(ranAngle) * radius;
+        targetPos.y += Mathf.Sin(ranAngle) * radius;
+        return Seek(targetPos);
+
+    }
+
+    public Vector3 CalcFuturePosition(float time)
+    {
+        return PhysicsObject.velocity * time * transform.position;
     }
 
 
