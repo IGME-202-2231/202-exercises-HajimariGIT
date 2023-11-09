@@ -144,9 +144,9 @@ MonoBehaviour:
   MaxForce: 10
   myPos: {x: 0, y: 0, z: 0}
   currentVelocity: {x: 0, y: 0, z: 0}
-  maxSpeed: 3
-  time: 1.18
-  radius: 0.56
+  maxSpeed: 10
+  time: 3
+  radius: 1
 --- !u!114 &7686298 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5405069055517177050, guid: 75c1a0a5f91324c4d906a4a6c1e5355b, type: 3}
