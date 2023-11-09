@@ -11,9 +11,9 @@ public class PhysicsObject : MonoBehaviour
     public Vector3 Acelleration = Vector3.zero;
     public float mass;
     public float maxSpeed;
-    private float totalCamheight;
+    public float totalCamheight;
     int test;
-    private float totalCamwidth;
+    public float totalCamwidth;
     public bool useGravity;
     public bool useFriction;
     public float gravity;
@@ -83,7 +83,7 @@ public class PhysicsObject : MonoBehaviour
 
 
 
-        if (Position.y > totalCamheight / 2f)
+        /*if (Position.y > totalCamheight / 2f)
         {
             Velocity.y *= -1f;
         }
@@ -99,7 +99,7 @@ public class PhysicsObject : MonoBehaviour
         else if (Position.x < -totalCamwidth / 2f)
         {
             Velocity.x *= -1f;
-        }
+        }*/
 
 
 

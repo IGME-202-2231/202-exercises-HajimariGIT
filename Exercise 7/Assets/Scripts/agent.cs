@@ -107,6 +107,42 @@ public abstract class agent : MonoBehaviour
     }
 
 
+    protected Vector3 StayInBounds()
+    {
+       /* if (transform.position.y > PhysicsObject.totalCamheight / 2f)
+        {
+           Velocity.y *= -1f;
+        }
+       else if (transform.position.y < -PhysicsObject.totalCamheight / 2f)
+       {
+           Velocity.y *= -1f;
+       }
+
+       if (transform.position.x > PhysicsObject.totalCamwidth / 2f)
+       {
+           Velocity.x *= -1f;
+       }
+       else if (transform.position.x > -PhysicsObject.totalCamwidth / 2f)
+       {
+           Velocity.x *= -1f;
+       }*/
+
+
+
+       if(transform.position.y >= PhysicsObject.totalCamheight / 2f || transform.position.y <= -PhysicsObject.totalCamheight / 2f
+            || transform.position.x >= PhysicsObject.totalCamwidth / 2f || transform.position.x >= -PhysicsObject.totalCamwidth / 2f)
+       {
+            return Seek(Vector3.zero);
+       }
+
+      
+
+
+        //otherwise 
+        return Vector3.zero;
+    }
+
+
 
 
 }
