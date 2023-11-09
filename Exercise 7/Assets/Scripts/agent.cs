@@ -131,8 +131,8 @@ public abstract class agent : MonoBehaviour
 
 
 
-       if(transform.position.y >= PhysicsObject.totalCamheight || transform.position.y <= -PhysicsObject.totalCamheight 
-            || transform.position.x >= PhysicsObject.totalCamwidth  || transform.position.x >= -PhysicsObject.totalCamwidth)
+       if(transform.position.y >= PhysicsObject.totalCamheight || transform.position.y <= -PhysicsObject.totalCamheight
+            || transform.position.x >= PhysicsObject.totalCamwidth || transform.position.x >= -PhysicsObject.totalCamwidth )
        {
             return Seek(Vector3.zero);
        }
