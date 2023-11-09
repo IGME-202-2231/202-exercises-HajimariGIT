@@ -27,9 +27,10 @@ public abstract class agent : MonoBehaviour
     {
 
         CalcSteeringForce();
+       
 
 
-        
+
     }
 
 
@@ -47,6 +48,7 @@ public abstract class agent : MonoBehaviour
 
         // Calculate seek steering force
         Vector3 seekingForce = desiredVelocity - PhysicsObject.Velocity;
+     
 
 
         
@@ -103,7 +105,7 @@ public abstract class agent : MonoBehaviour
 
     public Vector3 CalcFuturePosition(float time)
     {
-        return PhysicsObject.velocity * time * transform.position;
+        return PhysicsObject.Velocity * time + transform.position;
     }
 
 
