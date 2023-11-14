@@ -135,7 +135,7 @@ public abstract class agent : MonoBehaviour
 
        if (transform.position.x > PhysicsObject.totalCamwidth / 2f)
        {
-           Velocity.x *= -1f;
+           Velocity.x *= -1f; 
        }
        else if (transform.position.x > -PhysicsObject.totalCamwidth / 2f)
        {
