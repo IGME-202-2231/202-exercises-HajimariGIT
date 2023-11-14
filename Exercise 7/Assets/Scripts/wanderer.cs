@@ -12,9 +12,11 @@ public class wanderer : agent
 
     protected override void CalcSteeringForce()
     {
+        PhysicsObject.ApplyForce(Seperate());
         PhysicsObject.ApplyForce(StayInBounds());
         PhysicsObject.ApplyForce(Wander(time,radius));
        
+
     }
 
 

@@ -10,7 +10,8 @@ public abstract class agent : MonoBehaviour
     public Vector3 myPos;
     public Vector3 currentVelocity;
     public float maxSpeed;
-  
+    public  AgentManager manager;
+    public float seperateRange=1f;
 
 
 
@@ -93,6 +94,18 @@ public abstract class agent : MonoBehaviour
         return Flee(target.transform.position);
     }
 
+    protected Vector3 Flee(agent target)
+    {
+        // Call the other version of Seek 
+        //   which returns the seeking steering force
+        //  and then return that returned vector. 
+
+
+
+        return Flee(target.transform.position);
+    }
+
+
     protected Vector3 Wander(float time,float radius)
     {
         Vector3 targetPos = CalcFuturePosition(time);
@@ -145,6 +158,22 @@ public abstract class agent : MonoBehaviour
 
 
 
+    }
+
+
+
+    protected Vector3 Seperate()
+    {
+        Vector3 steeringforce = Vector3.zero;
+        foreach(agent agent in manager.agents)
+        {
+            float dis = Vector3.Distance(transform.position, agent.transform.position);
+            if (Mathf.Epsilon < dis)
+                steeringforce += Flee(agent) * (seperateRange / dis);
+
+        }
+
+        return steeringforce;
     }
 
 
