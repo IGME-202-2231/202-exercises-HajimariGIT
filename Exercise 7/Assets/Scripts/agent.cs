@@ -12,6 +12,7 @@ public abstract class agent : MonoBehaviour
     public float maxSpeed;
     public  AgentManager manager;
     public float seperateRange=1f;
+  //  float boundWeight = 1;
 
 
 
@@ -119,6 +120,10 @@ public abstract class agent : MonoBehaviour
     public Vector3 CalcFuturePosition(float time)
     {
         return PhysicsObject.Velocity * time + transform.position;
+
+        //totalForce = StayInBounds() * boundWeight 
+        //totalForce+= Seperate 
+        //take out of wander put here
     }
      
 
