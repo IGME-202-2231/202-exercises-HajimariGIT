@@ -54,7 +54,8 @@ public class PhysicsObject : MonoBehaviour
         totalCamheight = 2f * Camera.main.orthographicSize;
         totalCamwidth = totalCamheight * Camera.main.aspect;
         gravity = .98f;
-        maxSpeed = 12f;
+        //adjust to acell
+        maxSpeed = 6f;
     }
 
     // Update is called once per frame
