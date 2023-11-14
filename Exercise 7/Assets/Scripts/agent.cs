@@ -169,7 +169,7 @@ public abstract class agent : MonoBehaviour
         {
             float dis = Vector3.Distance(transform.position, agent.transform.position);
             if (Mathf.Epsilon < dis)
-                steeringforce += Flee(agent) * (seperateRange / dis);
+                steeringforce += Flee(agent) * (seperateRange / dis);//0.3
 
         }
 
