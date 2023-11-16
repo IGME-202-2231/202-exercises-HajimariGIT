@@ -48,7 +48,7 @@ public class tagplayer : agent
                 break;
 
                 case TagStates.It:
-                 if()
+                 
 
 
                 break;
@@ -60,4 +60,6 @@ public class tagplayer : agent
 
     }
 
+
+    
 }
