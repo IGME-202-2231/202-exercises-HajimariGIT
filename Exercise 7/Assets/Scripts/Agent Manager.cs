@@ -13,15 +13,41 @@ public class AgentManager : MonoBehaviour
     public float CountTime = 5;
 
     public agent ItPlayer;
+    public float spawnNum = 10f;
+    public GameObject ag;
+    public AgentManager agentManager;
     void Start()
     {
-        
+        SpawnAgent();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+     
+
+    }
+
+    public void SpawnAgent()
+    {
+        for (int i = 0; i < spawnNum; i++)
+        {
+            GameObject NewAgent;
+            Vector3 SpawnNew = new Vector3();
+            SpawnNew.x = 0;
+            SpawnNew.y = 0;
+            SpawnNew.z = 0;
+            NewAgent = Instantiate(ag, SpawnNew, Quaternion.identity);
+            NewAgent.GetComponent<agent>().manager = this;
+            agents.Add(NewAgent.GetComponent<agent>());
+           
+
+
+
+
+
+        }
+
     }
 
 
