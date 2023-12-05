@@ -5,14 +5,18 @@ using UnityEngine;
 
 public abstract class agent : MonoBehaviour
 {
-    [SerializeField] protected PhysicsObject PhysicsObject; 
+    [SerializeField] protected PhysicsObject PhysicsObject;
     public float MaxForce;
     public Vector3 myPos;
     public Vector3 currentVelocity;
     public float maxSpeed;
-    public  AgentManager manager;
-    public float seperateRange=1f;
-  //  float boundWeight = 1;
+    public AgentManager manager;
+    public float seperateRange = 1f;
+    public float avoidTime = 1f;
+    public float avoidDist = 0f;
+    //  float boundWeight = 1;
+    public List <Vector3> foundObstacles = new List<Vector3>();
+
 
 
 
@@ -25,11 +29,11 @@ public abstract class agent : MonoBehaviour
     }
 
     // Update is called once per frame
-   protected void Update()
+    protected void Update()
     {
 
         CalcSteeringForce();
-       
+
 
 
 
@@ -50,10 +54,10 @@ public abstract class agent : MonoBehaviour
 
         // Calculate seek steering force
         Vector3 seekingForce = desiredVelocity - PhysicsObject.Velocity;
-     
 
 
-        
+
+
 
         // Return seek steering force
         return seekingForce;
@@ -65,8 +69,8 @@ public abstract class agent : MonoBehaviour
         //   which returns the seeking steering force
         //  and then return that returned vector. 
 
-       
-        return Seek(target.transform.position); 
+
+        return Seek(target.transform.position);
     }
 
     protected Vector3 Flee(Vector3 targetPos)
@@ -90,8 +94,8 @@ public abstract class agent : MonoBehaviour
         //   which returns the seeking steering force
         //  and then return that returned vector. 
 
-       
-      
+
+
         return Flee(target.transform.position);
     }
 
@@ -107,7 +111,7 @@ public abstract class agent : MonoBehaviour
     }
 
 
-    protected Vector3 Wander(float time,float radius)
+    protected Vector3 Wander(float time, float radius)
     {
         Vector3 targetPos = CalcFuturePosition(time);
         float ranAngle = Random.Range(0, Mathf.PI * 2f);
@@ -125,41 +129,41 @@ public abstract class agent : MonoBehaviour
         //totalForce+= Seperate 
         //take out of wander put here
     }
-     
+
 
     protected Vector3 StayInBounds()
     {
-       /* if (transform.position.y > PhysicsObject.totalCamheight / 2f)
+        /* if (transform.position.y > PhysicsObject.totalCamheight / 2f)
+         {
+            Velocity.y *= -1f;
+         }
+        else if (transform.position.y < -PhysicsObject.totalCamheight / 2f)
         {
-           Velocity.y *= -1f;
+            Velocity.y *= -1f;
         }
-       else if (transform.position.y < -PhysicsObject.totalCamheight / 2f)
-       {
-           Velocity.y *= -1f;
-       }
 
-       if (transform.position.x > PhysicsObject.totalCamwidth / 2f)
-       {
-           Velocity.x *= -1f; 
-       }
-       else if (transform.position.x > -PhysicsObject.totalCamwidth / 2f)
-       {
-           Velocity.x *= -1f;
-       }*/
+        if (transform.position.x > PhysicsObject.totalCamwidth / 2f)
+        {
+            Velocity.x *= -1f; 
+        }
+        else if (transform.position.x > -PhysicsObject.totalCamwidth / 2f)
+        {
+            Velocity.x *= -1f;
+        }*/
 
 
 
-       if(transform.position.y >= PhysicsObject.totalCamheight /2 - 2.5|| transform.position.y <= -PhysicsObject.totalCamheight /2 +2.5
-            || transform.position.x >= PhysicsObject.totalCamwidth /2 -2.3 || transform.position.x <= -PhysicsObject.totalCamwidth /2 +2.3)
-       {
+        if (transform.position.y >= PhysicsObject.totalCamheight / 2 - 2.5 || transform.position.y <= -PhysicsObject.totalCamheight / 2 + 2.5
+             || transform.position.x >= PhysicsObject.totalCamwidth / 2 - 2.3 || transform.position.x <= -PhysicsObject.totalCamwidth / 2 + 2.3)
+        {
             return Seek(Vector3.zero);
-       }
-       else
+        }
+        else
         {
             return Vector3.zero;
 
         }
-       
+
 
 
 
@@ -170,7 +174,7 @@ public abstract class agent : MonoBehaviour
     protected Vector3 Seperate()
     {
         Vector3 steeringforce = Vector3.zero;
-        foreach(agent agent in manager.agents)
+        foreach (agent agent in manager.agents)
         {
             float dis = Vector3.Distance(transform.position, agent.transform.position);
             if (Mathf.Epsilon < dis)
@@ -180,6 +184,47 @@ public abstract class agent : MonoBehaviour
 
         return steeringforce;
     }
+
+  
+
+    protected Vector3 AvoidObstacles(float avoidTime)
+    {
+        Vector3 totalAvoidForce = Vector3.zero;
+        foundObstacles.Clear();
+
+        Vector3 futurePos = CalcFuturePosition(avoidTime);
+        float avoidDist = Vector3.Distance(transform.position, futurePos) + PhysicsObject.Radius;
+
+        foreach (obstacles obstacle in manager.obstacles)
+        {
+            Vector3 aToO = obstacle.transform.position - transform.position;
+            float rightDot = Vector3.Dot(transform.right, aToO);
+            float forwardDot = Vector3.Dot(PhysicsObject.Direction, aToO);
+
+            if (forwardDot >= -obstacle.Radius && forwardDot <= avoidDist + obstacle.Radius
+                && Mathf.Abs(rightDot) <= PhysicsObject.Radius + obstacle.Radius)
+            {
+                foundObstacles.Add(obstacle.transform.position);
+
+                Vector3 steeringForce = transform.right * (forwardDot / avoidDist) * maxSpeed;
+
+                if (rightDot < 0)
+                {
+                    totalAvoidForce += steeringForce;
+                }
+                else
+                {
+                    totalAvoidForce -= steeringForce;
+                }
+            }
+        }
+
+        return totalAvoidForce;
+    }
+
+
+
+
 
 
 
